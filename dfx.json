@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "dfx": "0.8.0",
+  "canisters": {
+    "game1": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game2": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game3": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game4": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game5": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game6": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game7": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game8": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game9": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "game10": {
+      "main": "src/game.mo",
+      "type": "motoko"
+    },
+    "controller": {
+      "main": "src/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "vessel sources"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  }
+}
