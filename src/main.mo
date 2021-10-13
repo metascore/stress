@@ -51,21 +51,23 @@ actor {
     let scoreRate = 0.1;
     // We will use this to determine which players score in each pulse
     var scoringOffset = 0.0;
-    public func pulse () : async () {
+    public func pulse () : async Nat {
         // Select the chunk of players to score in this pulse
+        var sims : Nat = 0;
         let a = Int.abs(Float.toInt(scoringOffset * Float.fromInt(playerCount)));
         let b = a + Int.abs(Float.toInt(Float.fromInt(playerCount) * scoreRate));
         Debug.print("Simulating players #" # Nat.toText(a) # "-" # Nat.toText(b));
-        for (i in Iter.range(a, b)) {
-            try {
-                ignore simPlayer(players[i]);
-            } catch (e) {
-                Debug.print("Simulation failed: " # Error.message(e));
+        label l for (i in Iter.range(a, b)) {
+            switch (players[i]) {
+                case (p) {
+                    await simPlayer(p);
+                };
             };
         };
         // Move the cursor for the next pulse
         scoringOffset := scoringOffset + scoreRate;
         if (scoringOffset >= 1) scoringOffset := 0;
+        sims;
     };
 
     func simPlayer (player : Principal) : async () {

@@ -42,12 +42,18 @@ shared ({ caller = owner }) actor class Metagame () : async Metascore.GameInterf
     public shared func metascoreRegisterSelf(callback : Metascore.RegisterCallback) : async () {
         await callback({
             name;
+            playUrl = "https://l2jyf-nqaaa-aaaah-qadha-cai.raw.ic0.app/";
+            flavorText = ?"A Tarot card game.";
         });
     };
 
     public func register () : async Result.Result<(), Text> {
         await controller.register(Principal.fromActor(self));
         await metascore.register(Principal.fromActor(self));
+    };
+
+    public func unregister () : async Result.Result<(), Text> {
+        await metascore.unregister(Principal.fromActor(self));
     };
 
     public shared func score (player : Player.Player) : async () {
